@@ -97,7 +97,7 @@ export const info = {
         {
             title: "Landing Page",
             live: "https://www.paulohsouza.com.br/#/",
-            source: "",
+            source: "https://github.com/phs-santos/portifolio-paulo",
             image: mock1
         },
         {

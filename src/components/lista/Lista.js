@@ -36,14 +36,16 @@ export default function Formulario() {
                     <Table sx={{ minWidth: 650 }} aria-label="message table">
                         <TableHead>
                             <TableRow>
+                                <TableCell></TableCell>
                                 <TableCell>Name</TableCell>
                                 <TableCell>Email</TableCell>
                                 <TableCell>Telefone</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {messages.map((message) => (
+                            {messages.map((message, i) => (
                                 <TableRow key={message._id}>
+                                    <TableCell>{i+1}</TableCell>
                                     <TableCell>{message.nome}</TableCell>
                                     <TableCell>{message.email}</TableCell>
                                     <TableCell>{message.telefone}</TableCell>
