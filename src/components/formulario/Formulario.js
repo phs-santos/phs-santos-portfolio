@@ -17,7 +17,7 @@ export default function Formulario() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        axios.post('http://localhost:8181/api/sendMessage', {
+        axios.post('https://api-phss.vercel.app/api/sendMessage', {
             nome,
             email,
             telefone,

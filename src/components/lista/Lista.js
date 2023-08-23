@@ -19,7 +19,7 @@ export default function Formulario() {
     }, []);
 
     const getMessages = () => {
-        axios.get('http://localhost:8181/api/getMessages')
+        axios.get('https://api-phss.vercel.app/api/getMessages')
             .then(function (response) {
                 console.log(response.data);
                 setMessages(response.data);
