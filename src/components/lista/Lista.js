@@ -40,6 +40,7 @@ export default function Formulario() {
                                 <TableCell>Name</TableCell>
                                 <TableCell>Email</TableCell>
                                 <TableCell>Telefone</TableCell>
+                                <TableCell>Mensagem</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -49,6 +50,7 @@ export default function Formulario() {
                                     <TableCell>{message.nome}</TableCell>
                                     <TableCell>{message.email}</TableCell>
                                     <TableCell>{message.telefone}</TableCell>
+                                    <TableCell>{message.mensagem}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
