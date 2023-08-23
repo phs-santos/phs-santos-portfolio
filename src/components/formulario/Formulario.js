@@ -116,7 +116,7 @@ export default function Formulario() {
                                 onChange={evento => setMensagem(evento.target.value)}
                                 placeholder="Digite sua mensagem"
                                 rows={5}
-                                cols={50}
+                                cols={48}
                                 required
                             />
                         </div>

@@ -89,9 +89,9 @@ i {
 
 .textareaContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: first baseline;
   gap: 10px;
   width: 100%;
   margin-bottom: 16px;
@@ -122,9 +122,9 @@ i {
 
 .inputContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: first baseline;
   gap: 10px;
   width: 100%;
   margin-bottom: 16px;
