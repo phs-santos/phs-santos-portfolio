@@ -19,9 +19,8 @@ export default function Formulario() {
     }, []);
 
     const getMessages = () => {
-        axios.get('https://api-phss.vercel.app/api/getMessages')
+        axios.get(`${process.env.REACT_APP_API}getMessages`)
             .then(function (response) {
-                console.log(response.data);
                 setMessages(response.data);
             })
             .catch(function (error) {
@@ -39,7 +38,34 @@ export default function Formulario() {
                                 <TableCell></TableCell>
                                 <TableCell>Name</TableCell>
                                 <TableCell>Email</TableCell>
+                                <TableCell>Ações</TableCell>
+
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {messages.map((message, i) => (
+                                <TableRow key={message._id}>
+                                    <TableCell>{i + 1}</TableCell>
+                                    <TableCell>{message.nome}</TableCell>
+                                    <TableCell>{message.email}</TableCell>
+                                    <TableCell>Editar</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+
+
+
+                {/* <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="message table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell></TableCell>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Email</TableCell>
                                 <TableCell>Telefone</TableCell>
+                                <TableCell>Sexo</TableCell>
                                 <TableCell>Mensagem</TableCell>
                             </TableRow>
                         </TableHead>
@@ -50,12 +76,13 @@ export default function Formulario() {
                                     <TableCell>{message.nome}</TableCell>
                                     <TableCell>{message.email}</TableCell>
                                     <TableCell>{message.telefone}</TableCell>
+                                    <TableCell>{message.sexo}</TableCell>
                                     <TableCell>{message.mensagem}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
-                </TableContainer>
+                </TableContainer> */}
             </Box>
         </Box>
     );

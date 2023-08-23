@@ -4,23 +4,21 @@ import classNames from "classnames";
 import { Box } from "@mui/material";
 import axios from 'axios';
 
-
 export default function Formulario() {
     const [nome, setNome] = useState('');
     const [email, setEmail] = useState('');
     const [telefone, setTelefone] = useState('');
-    const [sexo, setSexo] = useState('');
+    const [sexo, setSexo] = useState('Masculino'); // Default value for select
     const [mensagem, setMensagem] = useState('');
-
     const [showPopup, setShowPopup] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        axios.post('https://api-phss.vercel.app/api/sendMessage', {
+        axios.post(`${process.env.REACT_APP_API}sendMessage`, {
             nome,
             email,
             telefone,
+            sexo,
             mensagem
         }).then(function (response) {
             console.log(response.data);
@@ -28,7 +26,7 @@ export default function Formulario() {
             setNome('');
             setEmail('');
             setTelefone('');
-            setSexo('');
+            setSexo('Masculino'); // Reset select to default
             setMensagem('');
 
             setShowPopup(true);
@@ -36,7 +34,6 @@ export default function Formulario() {
             setTimeout(() => {
                 setShowPopup(false);
             }, 5000);
-
         }).catch(function (error) {
             console.error(error);
         });
@@ -46,7 +43,7 @@ export default function Formulario() {
         <Box display={'flex'} flexDirection={'column'} alignItems={'center'} mt={'3rem'}>
             <Box component={'section'} className={classNames(Style.terminal, Style.shadowed)}
                 width={{ xs: '80%', md: '50%' }} borderRadius={'0.5rem'} mb={'4rem'}>
-                <Box sx={{ backgroundColor: '#8c8c8c', }} p={'0.5rem'} borderRadius={'0.5rem 0.5rem 0 0'}
+                <Box sx={{ backgroundColor: '#8c8c8c', color: 'rgb(0, 255, 164)', fontSize: '20px' }} p={'0.5rem'} borderRadius={'0.5rem 0.5rem 0 0'}
                     fontSize={'1rem'}>
                     Me envie uma mensagem:
                 </Box>
@@ -79,7 +76,11 @@ export default function Formulario() {
                                     placeholder="Digite o email"
                                     required />
                             </div>
+
                         </div>
+
+
+
 
                         <div className={Style.testePaulo}>
                             <div className={Style.inputContainer}>
@@ -94,52 +95,34 @@ export default function Formulario() {
                                     required />
                             </div>
 
-                            <div className={Style.inputContainer}>
+                            <div className={Style.selectContainer}>
                                 <label htmlFor="sexo">Sexo</label>
-                                <input
-                                    type="text"
-                                    name="sexo"
-                                    value={sexo}
-                                    onChange={evento => setSexo(evento.target.value)}
-                                    id="sexo"
-                                    placeholder="Digite seu sexo"
-                                    required />
+                                <select name="sexo" id="sexo" value={sexo} onChange={evento => setSexo(evento.target.value)} required>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
                             </div>
                         </div>
 
                         <div className={Style.textareaContainer}>
-                            <label htmlFor="mensagem">Mensagem</label>
-                            {/* <textarea
-                                name="mensagem"
-                                id="mensagem"
-                                value={mensagem}
-                                onChange={evento => setMensagem(evento.target.value)}
-                                placeholder="Digite sua mensagem"
-                                rows={5}
-                                cols={48}
-                                required
-                            /> */}
-                            <input
-                                type="text"
-                                name="mensagem"
-                                value={mensagem}
-                                onChange={evento => setMensagem(evento.target.value)}
-                                placeholder="Digite sua mensagem"
-                                id="mensagem"
-                                required />
+                                <label htmlFor="mensagem">Mensagem</label>
+                                <input
+                                    type="text"
+                                    name="mensagem"
+                                    value={mensagem}
+                                    onChange={evento => setMensagem(evento.target.value)}
+                                    placeholder="Digite sua mensagem"
+                                    id="mensagem"
+                                    required />
 
-                        </div>
-
+                            </div>
                         <button type='submit' className={Style.botao}>Enviar</button>
                     </form>
-
 
                     {showPopup && (
                         <div className={Style.popup}>
                             Mensagem enviada com sucesso!
-                            {/* <button className={Style.closeButton} onClick={togglePopup}>
-                                X
-                            </button> */}
                         </div>
                     )}
                 </Box>

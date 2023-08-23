@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Style from './Navbar.module.scss';
-import Toggler from "./home/Toggler";
+import Toggler from "./../pages/home/Toggler";
 import {Link, useLocation} from "react-router-dom";
 import {Box} from "@mui/material";
 import {info} from "../info/Info";
@@ -15,12 +15,6 @@ const links = [
         name: 'sobre mim',
         to: '/about',
         active: 'about'
-    },
-    {
-        name: info.initials,
-        type: 'initials',
-        to: '/',
-        active: 'home'
     },
     {
         name: 'Portfolio',
