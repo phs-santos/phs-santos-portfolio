@@ -5,6 +5,7 @@ i {
 
   &.red {
     color: $red;
+    font-size: 1.5rem;
   }
 
   &.amber {
@@ -38,7 +39,6 @@ i {
 }
 
 .terminal {
-
   p,
   li {
     margin: 1rem 0;
